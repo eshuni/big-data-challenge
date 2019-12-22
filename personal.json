@@ -1,0 +1,937 @@
+{
+  "paragraphs": [
+    {
+      "title": "",
+      "text": "%pyspark\n# Read in data from S3 Buckets\nfrom pyspark import SparkFiles\nurl \u003d\"https://s3.amazonaws.com/amazon-reviews-pds/tsv/amazon_reviews_us_Health_Personal_Care_v1_00.tsv.gz\"\nspark.sparkContext.addFile(url)\ndf \u003d spark.read.csv(SparkFiles.get(\"amazon_reviews_us_Health_Personal_Care_v1_00.tsv.gz\"), sep\u003d\"\\t\", header\u003dTrue, inferSchema\u003dTrue)\n\n# Show DataFrame\ndf.show(10)",
+      "user": "",
+      "dateUpdated": "2019-12-21 20:59:57.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+-----------+-----------+--------------+----------+--------------+--------------------+--------------------+-----------+-------------+-----------+----+-----------------+--------------------+--------------------+-------------------+\n|marketplace|customer_id|     review_id|product_id|product_parent|       product_title|    product_category|star_rating|helpful_votes|total_votes|vine|verified_purchase|     review_headline|         review_body|        review_date|\n+-----------+-----------+--------------+----------+--------------+--------------------+--------------------+-----------+-------------+-----------+----+-----------------+--------------------+--------------------+-------------------+\n|         US|     650634| R3EQSTM9PWRAL|B0091LBZSU|     578484426|Demograss Capsule...|Health \u0026 Personal...|          3|            0|          0|   N|                Y|         Three Stars|Only came with 30...|2015-08-31 00:00:00|\n|         US|   19827510| RBWPRK17XKIXD|B00PWW3LQ6|     456433146|Viva Labs #1 Prem...|Health \u0026 Personal...|          5|            0|          0|   N|                Y|A good portable s...|Really yummy and ...|2015-08-31 00:00:00|\n|         US|    1520474| RRSLOAF273XFC|B00DKEWA92|     460764511|     Whip-it Cleaner|Health \u0026 Personal...|          5|            1|          2|   N|                Y|       You need this|You cannot go wro...|2015-08-31 00:00:00|\n|         US|   23905905|R3S8W9Q6SWIT8O|B0015R3A7M|     135102038|Optimum Nutrition...|Health \u0026 Personal...|          4|            0|          0|   N|                Y|this is a good vi...|This is a good da...|2015-08-31 00:00:00|\n|         US|   28215779|R3QQ6NSLRVBFJC|B006B8U8BG|     200666829|Wet-Stop3 Bedwett...|Health \u0026 Personal...|          4|            0|          0|   N|                Y|progress is defin...|We have been usin...|2015-08-31 00:00:00|\n|         US|   23260912|R2XYDBMHUVJCSX|B00PFZFD8Y|     344168617|NatraCure Plantar...|Health \u0026 Personal...|          2|            0|          1|   N|                Y|           Two Stars|I wear it a few t...|2015-08-31 00:00:00|\n|         US|    7965616|R1L94ESVC657A9|B0034792JG|     291831570|Glade Sense \u0026 Spr...|Health \u0026 Personal...|          5|            0|          0|   N|                Y|          Five Stars|Love this product...|2015-08-31 00:00:00|\n|         US|    3443178|R3DI4B8LDWFQ3K|B000052XIA|     493678550|Vagisil Anti-Itch...|Health \u0026 Personal...|          1|            3|          4|   N|                Y|It still is itchi...|It still is itchi...|2015-08-31 00:00:00|\n|         US|   20838781|R1G7VV4HCXUQQL|B004GCUK8A|       3902598|Glade Automatic S...|Health \u0026 Personal...|          5|            0|          0|   N|                Y|          Five Stars|               Good!|2015-08-31 00:00:00|\n|         US|   15267517|R3TTNYN1TAMUSU|B00K7W1QAO|     633971374|Kirkland Signatur...|Health \u0026 Personal...|          5|            0|          0|   N|                Y|      Will buy again|These bags are ma...|2015-08-31 00:00:00|\n+-----------+-----------+--------------+----------+--------------+--------------------+--------------------+-----------+-------------+-----------+----+-----------------+--------------------+--------------------+-------------------+\nonly showing top 10 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20191216-020719_964171724",
+      "dateCreated": "2019-12-16 02:07:19.000",
+      "dateStarted": "2019-12-21 20:57:18.261",
+      "dateFinished": "2019-12-21 20:59:57.308",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# print schema\ndf.printSchema()",
+      "user": "",
+      "dateUpdated": "2019-12-21 20:59:57.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "root\n |-- marketplace: string (nullable \u003d true)\n |-- customer_id: integer (nullable \u003d true)\n |-- review_id: string (nullable \u003d true)\n |-- product_id: string (nullable \u003d true)\n |-- product_parent: integer (nullable \u003d true)\n |-- product_title: string (nullable \u003d true)\n |-- product_category: string (nullable \u003d true)\n |-- star_rating: integer (nullable \u003d true)\n |-- helpful_votes: integer (nullable \u003d true)\n |-- total_votes: integer (nullable \u003d true)\n |-- vine: string (nullable \u003d true)\n |-- verified_purchase: string (nullable \u003d true)\n |-- review_headline: string (nullable \u003d true)\n |-- review_body: string (nullable \u003d true)\n |-- review_date: timestamp (nullable \u003d true)\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20191221-162103_937293709",
+      "dateCreated": "2019-12-21 16:21:03.000",
+      "dateStarted": "2019-12-21 20:59:57.310",
+      "dateFinished": "2019-12-21 20:59:57.421",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%md\n## Drop Duplicates",
+      "user": "",
+      "dateUpdated": "2019-12-21 20:59:57.000",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "selectedInterpreter": {
+          "name": "md",
+          "profile": "md",
+          "isCustom": false,
+          "editorLanguage": "markdown",
+          "className": "org.apache.zeppelin.markdown.Markdown",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "editorHide": true,
+        "results": [
+          {}
+        ]
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eDrop Duplicates\u003c/h2\u003e\n\u003c/div\u003e",
+            "type": "HTML"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20191221-155257_1881158959",
+      "dateCreated": "2019-12-21 15:52:57.000",
+      "dateStarted": "2019-12-21 20:59:57.423",
+      "dateFinished": "2019-12-21 20:59:57.426",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Count rows\nprint(df.count())\ndf\u003d df.dropna()\nprint(df.count())\n",
+      "user": "",
+      "dateUpdated": "2019-12-21 21:01:33.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "5331449\n5330701\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20191216-021843_2044578440",
+      "dateCreated": "2019-12-16 02:18:43.000",
+      "dateStarted": "2019-12-21 20:59:57.428",
+      "dateFinished": "2019-12-21 21:01:33.977",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%md\n## Create a Dataframe for Review ID\n",
+      "user": "",
+      "dateUpdated": "2019-12-21 21:01:33.000",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "selectedInterpreter": {
+          "name": "md",
+          "profile": "md",
+          "isCustom": false,
+          "editorLanguage": "markdown",
+          "className": "org.apache.zeppelin.markdown.Markdown",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "editorHide": true,
+        "results": [
+          {}
+        ]
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eCreate a Dataframe for Review ID\u003c/h2\u003e\n\u003c/div\u003e",
+            "type": "HTML"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20191221-155458_2143709446",
+      "dateCreated": "2019-12-21 15:54:58.000",
+      "dateStarted": "2019-12-21 21:01:33.979",
+      "dateFinished": "2019-12-21 21:01:33.980",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n\nreview_id_table \u003d df.select([\"review_id\", \"customer_id\", \"product_id\", \"product_parent\", \"review_date\"])\nreview_id_table.show(10)",
+      "user": "",
+      "dateUpdated": "2019-12-21 21:01:34.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+--------------+-----------+----------+--------------+-------------------+\n|     review_id|customer_id|product_id|product_parent|        review_date|\n+--------------+-----------+----------+--------------+-------------------+\n| R3EQSTM9PWRAL|     650634|B0091LBZSU|     578484426|2015-08-31 00:00:00|\n| RBWPRK17XKIXD|   19827510|B00PWW3LQ6|     456433146|2015-08-31 00:00:00|\n| RRSLOAF273XFC|    1520474|B00DKEWA92|     460764511|2015-08-31 00:00:00|\n|R3S8W9Q6SWIT8O|   23905905|B0015R3A7M|     135102038|2015-08-31 00:00:00|\n|R3QQ6NSLRVBFJC|   28215779|B006B8U8BG|     200666829|2015-08-31 00:00:00|\n|R2XYDBMHUVJCSX|   23260912|B00PFZFD8Y|     344168617|2015-08-31 00:00:00|\n|R1L94ESVC657A9|    7965616|B0034792JG|     291831570|2015-08-31 00:00:00|\n|R3DI4B8LDWFQ3K|    3443178|B000052XIA|     493678550|2015-08-31 00:00:00|\n|R1G7VV4HCXUQQL|   20838781|B004GCUK8A|       3902598|2015-08-31 00:00:00|\n|R3TTNYN1TAMUSU|   15267517|B00K7W1QAO|     633971374|2015-08-31 00:00:00|\n+--------------+-----------+----------+--------------+-------------------+\nonly showing top 10 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20191216-022435_1892237239",
+      "dateCreated": "2019-12-16 02:24:35.000",
+      "dateStarted": "2019-12-21 21:01:33.981",
+      "dateFinished": "2019-12-21 21:01:34.193",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%md\n## Create a Dataframe for Products",
+      "user": "",
+      "dateUpdated": "2019-12-21 21:01:34.000",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "selectedInterpreter": {
+          "name": "md",
+          "profile": "md",
+          "isCustom": false,
+          "editorLanguage": "markdown",
+          "className": "org.apache.zeppelin.markdown.Markdown",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "editorHide": true,
+        "results": [
+          {}
+        ]
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eCreate a Dataframe for Products\u003c/h2\u003e\n\u003c/div\u003e",
+            "type": "HTML"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20191221-163252_176989980",
+      "dateCreated": "2019-12-21 16:32:52.000",
+      "dateStarted": "2019-12-21 21:01:34.194",
+      "dateFinished": "2019-12-21 21:01:34.195",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n\nproduct \u003d df.select([\"product_id\", \"product_title\"])\nproduct.show(10)",
+      "user": "",
+      "dateUpdated": "2019-12-21 21:01:34.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+----------+--------------------+\n|product_id|       product_title|\n+----------+--------------------+\n|B0091LBZSU|Demograss Capsule...|\n|B00PWW3LQ6|Viva Labs #1 Prem...|\n|B00DKEWA92|     Whip-it Cleaner|\n|B0015R3A7M|Optimum Nutrition...|\n|B006B8U8BG|Wet-Stop3 Bedwett...|\n|B00PFZFD8Y|NatraCure Plantar...|\n|B0034792JG|Glade Sense \u0026 Spr...|\n|B000052XIA|Vagisil Anti-Itch...|\n|B004GCUK8A|Glade Automatic S...|\n|B00K7W1QAO|Kirkland Signatur...|\n+----------+--------------------+\nonly showing top 10 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20191216-023436_86506543",
+      "dateCreated": "2019-12-16 02:34:36.000",
+      "dateStarted": "2019-12-21 21:01:34.196",
+      "dateFinished": "2019-12-21 21:01:34.362",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%md\n## Create a Dataframe for Customer",
+      "user": "",
+      "dateUpdated": "2019-12-21 21:01:34.000",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "selectedInterpreter": {
+          "name": "md",
+          "profile": "md",
+          "isCustom": false,
+          "editorLanguage": "markdown",
+          "className": "org.apache.zeppelin.markdown.Markdown",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "editorHide": true,
+        "results": [
+          {}
+        ]
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eCreate a Dataframe for Customer\u003c/h2\u003e\n\u003c/div\u003e",
+            "type": "HTML"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20191221-163333_987107718",
+      "dateCreated": "2019-12-21 16:33:33.000",
+      "dateStarted": "2019-12-21 21:01:34.364",
+      "dateFinished": "2019-12-21 21:01:34.364",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\ngroup \u003d df.groupby(\"customer_id\").count()\ngroup.show(10)",
+      "user": "",
+      "dateUpdated": "2019-12-21 21:02:41.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+-----------+-----+\n|customer_id|count|\n+-----------+-----+\n|    4919528|    5|\n|   51451778|    3|\n|   12713799|    1|\n|    8673341|    1|\n|   42146698|    2|\n|    1117644|    2|\n|   28058398|    1|\n|   14375645|    1|\n|   24540309|    1|\n|   39715602|    1|\n+-----------+-----+\nonly showing top 10 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20191221-163359_549797739",
+      "dateCreated": "2019-12-21 16:33:59.000",
+      "dateStarted": "2019-12-21 21:01:34.367",
+      "dateFinished": "2019-12-21 21:02:41.278",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\ngroup \u003d group.withColumnRenamed(\"count\", \"customer_count\")\ncustomer \u003d group.select([\"customer_id\", \"customer_count\"])\ncustomer.show(10)",
+      "user": "",
+      "dateUpdated": "2019-12-21 21:03:47.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+-----------+--------------+\n|customer_id|customer_count|\n+-----------+--------------+\n|    4919528|             5|\n|   51451778|             3|\n|   12713799|             1|\n|    8673341|             1|\n|   42146698|             2|\n|    1117644|             2|\n|   28058398|             1|\n|   14375645|             1|\n|   24540309|             1|\n|   39715602|             1|\n+-----------+--------------+\nonly showing top 10 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20191216-024839_1054516428",
+      "dateCreated": "2019-12-16 02:48:39.000",
+      "dateStarted": "2019-12-21 21:02:41.281",
+      "dateFinished": "2019-12-21 21:03:47.741",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%md\n## Create a Dataframe for Vine ",
+      "user": "",
+      "dateUpdated": "2019-12-21 21:03:47.000",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "selectedInterpreter": {
+          "name": "md",
+          "profile": "md",
+          "isCustom": false,
+          "editorLanguage": "markdown",
+          "className": "org.apache.zeppelin.markdown.Markdown",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "editorHide": true,
+        "results": [
+          {}
+        ]
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eCreate a Dataframe for Vine\u003c/h2\u003e\n\u003c/div\u003e",
+            "type": "HTML"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20191220-011641_1700939098",
+      "dateCreated": "2019-12-20 01:16:41.000",
+      "dateStarted": "2019-12-21 21:03:47.742",
+      "dateFinished": "2019-12-21 21:03:47.742",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\nvine \u003d df.select([\"review_id\", \"star_rating\", \"helpful_votes\", \"total_votes\", \"vine\"])\nvine.show(10)",
+      "user": "",
+      "dateUpdated": "2019-12-21 21:03:47.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+--------------+-----------+-------------+-----------+----+\n|     review_id|star_rating|helpful_votes|total_votes|vine|\n+--------------+-----------+-------------+-----------+----+\n| R3EQSTM9PWRAL|          3|            0|          0|   N|\n| RBWPRK17XKIXD|          5|            0|          0|   N|\n| RRSLOAF273XFC|          5|            1|          2|   N|\n|R3S8W9Q6SWIT8O|          4|            0|          0|   N|\n|R3QQ6NSLRVBFJC|          4|            0|          0|   N|\n|R2XYDBMHUVJCSX|          2|            0|          1|   N|\n|R1L94ESVC657A9|          5|            0|          0|   N|\n|R3DI4B8LDWFQ3K|          1|            3|          4|   N|\n|R1G7VV4HCXUQQL|          5|            0|          0|   N|\n|R3TTNYN1TAMUSU|          5|            0|          0|   N|\n+--------------+-----------+-------------+-----------+----+\nonly showing top 10 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20191216-025454_1177021119",
+      "dateCreated": "2019-12-16 02:54:54.000",
+      "dateStarted": "2019-12-21 21:03:47.743",
+      "dateFinished": "2019-12-21 21:03:47.954",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%md\n## Write Dataframe to RDS",
+      "user": "",
+      "dateUpdated": "2019-12-21 21:03:47.000",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "selectedInterpreter": {
+          "name": "md",
+          "profile": "md",
+          "isCustom": false,
+          "editorLanguage": "markdown",
+          "className": "org.apache.zeppelin.markdown.Markdown",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "editorHide": true,
+        "results": [
+          {}
+        ]
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWrite Dataframe to RDS\u003c/h2\u003e\n\u003c/div\u003e",
+            "type": "HTML"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20191221-171602_800820068",
+      "dateCreated": "2019-12-21 17:16:02.000",
+      "dateStarted": "2019-12-21 21:03:47.956",
+      "dateFinished": "2019-12-21 21:03:47.957",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Configure settings for RDS\nmode \u003d \"append\"\njdbc_url\u003d\"jdbc:postgresql://mobile-app.cbgmpmq6ppxp.us-east-2.rds.amazonaws.com:5432/postgres\"\nconfig \u003d {\"user\":\"postgres\", \n          \"password\": \"Ire123ie\", \n          \"driver\":\"org.postgresql.Driver\"}",
+      "user": "",
+      "dateUpdated": "2019-12-21 21:03:48.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20191221-170627_77850717",
+      "dateCreated": "2019-12-21 17:06:27.000",
+      "dateStarted": "2019-12-21 21:03:47.959",
+      "dateFinished": "2019-12-21 21:03:48.067",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\ncustomer.dtypes",
+      "user": "",
+      "dateUpdated": "2019-12-21 22:17:05.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "[(\u0027customer_id\u0027, \u0027int\u0027), (\u0027customer_count\u0027, \u0027bigint\u0027)]",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20191221-193102_616582290",
+      "dateCreated": "2019-12-21 19:31:02.000",
+      "dateStarted": "2019-12-21 22:17:05.734",
+      "dateFinished": "2019-12-21 22:17:05.843",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Append DataFrame to review_id_table table in RDS\n\nreview_id_table.write.jdbc(url\u003djdbc_url, table\u003d\u0027review_id_table\u0027, mode\u003dmode, properties\u003dconfig)",
+      "user": "",
+      "dateUpdated": "2019-12-21 21:32:36.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20191221-170654_66710562",
+      "dateCreated": "2019-12-21 17:06:54.000",
+      "dateStarted": "2019-12-21 21:03:48.178",
+      "dateFinished": "2019-12-21 21:32:36.966",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Append DataFrame to products table in RDS\n\nproduct.write.jdbc(url\u003djdbc_url, table\u003d\u0027products\u0027, mode\u003dmode, properties\u003dconfig)",
+      "user": "",
+      "dateUpdated": "2019-12-21 22:49:44.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "data": "\u001b[0;31m\u001b[0m\n\u001b[0;31mAttributeError\u001b[0mTraceback (most recent call last)\n\u001b[0;32m\u003cipython-input-4-1002b0e1809f\u003e\u001b[0m in \u001b[0;36m\u003cmodule\u003e\u001b[0;34m()\u001b[0m\n\u001b[1;32m      1\u001b[0m \u001b[0;31m# Append DataFrame to products table in RDS\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      2\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----\u003e 3\u001b[0;31m \u001b[0mproduct\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mwrite\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mjdbc\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0murl\u001b[0m\u001b[0;34m\u003d\u001b[0m\u001b[0mjdbc_url\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mtable\u001b[0m\u001b[0;34m\u003d\u001b[0m\u001b[0;34m\u0027products\u0027\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mmode\u001b[0m\u001b[0;34m\u003d\u001b[0m\u001b[0mmode\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mproperties\u001b[0m\u001b[0;34m\u003d\u001b[0m\u001b[0mconfig\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\n\u001b[0;31mAttributeError\u001b[0m: \u0027function\u0027 object has no attribute \u0027write\u0027",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20191221-170951_978800930",
+      "dateCreated": "2019-12-21 17:09:51.000",
+      "dateStarted": "2019-12-21 22:49:32.459",
+      "dateFinished": "2019-12-21 22:49:44.338",
+      "status": "ERROR",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Append DataFrame to customers table in RDS\n\ncustomer.write.jdbc(url\u003djdbc_url, table\u003d\u0027customers\u0027, mode\u003dmode, properties\u003dconfig)",
+      "user": "",
+      "dateUpdated": "2019-12-21 21:38:22.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20191221-170949_1916423793",
+      "dateCreated": "2019-12-21 17:09:49.000",
+      "dateStarted": "2019-12-21 21:32:38.632",
+      "dateFinished": "2019-12-21 21:38:21.815",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Append DataFrame to vine_table table in RDS\n\nvine.write.jdbc(url\u003djdbc_url, table\u003d\u0027vine_table\u0027, mode\u003dmode, properties\u003dconfig)",
+      "user": "",
+      "dateUpdated": "2019-12-21 22:07:30.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20191221-170947_1698525965",
+      "dateCreated": "2019-12-21 17:09:47.000",
+      "dateStarted": "2019-12-21 21:38:22.218",
+      "dateFinished": "2019-12-21 22:07:30.368",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "",
+      "user": "",
+      "dateUpdated": "2019-12-21 19:44:10.000",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20191221-194410_1609411708",
+      "dateCreated": "2019-12-21 19:44:10.000",
+      "dateStarted": "2019-12-21 23:03:08.000",
+      "dateFinished": "2019-12-21 23:03:08.000",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    }
+  ],
+  "name": "Mobile_Apps",
+  "id": "ca7f605a018844019d3874d0dcb07b56",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {},
+  "info": {}
+}
